@@ -10,6 +10,7 @@ A RESTful Flask API for managing products across multiple categories (TV, Mobile
 - Comprehensive pytest test suite
 - CORS enabled for cross-origin requests
 - Health check endpoint for monitoring
+- CI/CD pipeline with GitHub Actions
 
 ## API Endpoints
 
@@ -81,6 +82,16 @@ docker run -d -p 5000:5000 --name flask-app-container flask-app
 
 The application will run with Gunicorn using 4 workers for better performance.
 
+## CI/CD
+
+This project includes a GitHub Actions workflow that:
+- Automatically builds Docker images on push to main/develop branches
+- Runs tests and code quality checks
+- Publishes images to GitHub Container Registry (ghcr.io)
+- Supports manual workflow dispatch
+
+Images are available at: `ghcr.io/rajeendranu/flask-products-app`
+
 ## Testing
 
 Run the test suite using pytest:
@@ -106,6 +117,9 @@ flask-products-app/
 ├── Dockerfile            # Docker configuration
 ├── .dockerignore         # Docker ignore file
 ├── .gitignore           # Git ignore file
+├── .github/
+│   └── workflows/
+│       └── ci-cd.yml     # CI/CD pipeline
 ├── tests/
 │   └── test_app.py      # Test suite
 └── README.md            # This file
@@ -118,6 +132,7 @@ flask-products-app/
 - Gunicorn 21.2.0 - WSGI HTTP Server
 - Pytest 7.4.3 - Testing framework
 - Docker - Containerization
+- GitHub Actions - CI/CD
 
 ## License
 
